@@ -2,29 +2,30 @@ services:
   - type: web
     name: german-translator-frontend
     env: docker
+    dockerfilePath: ./frontend/Dockerfile  # Updated to frontend/
     repo: https://github.com/ShohelAlMahmudDev/AI_German_Translator.git
-    rootDir: chatbot-ui
-    buildCommand: docker build -f Dockerfile -t german-translator-frontend .
+    rootDir: frontend                      # Updated to frontend/
     startCommand: serve -s build -l 10000
     region: oregon
     plan: free
     branch: main
     healthCheckPath: /
     autoDeploy: true
+    numInstances: 1
 
   - type: web
     name: german-translator-backend
     env: docker
+    dockerfilePath: ./backend/Dockerfile
     repo: https://github.com/ShohelAlMahmudDev/AI_German_Translator.git
     rootDir: backend
-    buildCommand: docker build -f Dockerfile -t german-translator-backend .
     startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
     region: oregon
     plan: free
     branch: main
     envVars:
       - key: DEEPSEEK_API_KEY
-      - key: DEEPSEEK_API_URL
-        sync: false  # Set manually in Render dashboard
+        sync: false  # Set manually in dashboard
     healthCheckPath: /docs
     autoDeploy: true
+    numInstances: 1
