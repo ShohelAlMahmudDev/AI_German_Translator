@@ -1,0 +1,23 @@
+.git
+.gitignore
+.dockerignore
+Dockerfile*
+docker-compose.yml
+
+# General
+*.DS_Store
+*.swp
+*.swo
+*.bak
+*.tmp
+*.log
+*.pid
+*.seed
+*.tar.gz
+*.zip
+
+# Editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
