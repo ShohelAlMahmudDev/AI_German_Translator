@@ -1,9 +1,0 @@
-fastapi
-uvicorn
-requests
-dotenv
-
-# pydantic
-# motor
-# requests
-# python-dotenv

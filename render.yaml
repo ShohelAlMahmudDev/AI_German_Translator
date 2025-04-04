@@ -2,9 +2,9 @@ services:
   - type: web
     name: german-translator-frontend
     env: docker
-    dockerfilePath: ./frontend/Dockerfile  # Path to frontend Dockerfile
-    repo: <your-repo-url>
-    rootDir: frontend  # Directory containing frontend code
+    dockerfilePath: ./frontend/Dockerfile
+    repo: https://github.com/ShohelAlMahmudDev/AI_German_Translator.git
+    rootDir: frontend
     region: oregon
     plan: free
     branch: main
@@ -15,15 +15,17 @@ services:
   - type: web
     name: german-translator-backend
     env: docker
-    dockerfilePath: ./backend/Dockerfile  # Path to backend Dockerfile
-    repo: <your-repo-url>
-    rootDir: backend  # Directory containing backend code
+    dockerfilePath: ./backend/Dockerfile
+    repo: https://github.com/ShohelAlMahmudDev/AI_German_Translator.git
+    rootDir: backend
     region: oregon
     plan: free
     branch: main
     envVars:
       - key: DEEPSEEK_API_KEY
-        sync: false  # Set this manually in the Render dashboard
+        sync: false
+      - key: DEEPSEEK_API_URL
+        sync: false
     healthCheckPath: /docs
     autoDeploy: true
     numInstances: 1

@@ -22,12 +22,9 @@ backend/venv/
 backend/env/
 backend/*.log
 backend/pip-log.txt
-backend/pip-delete-this-directory.txt
+backend/node_modules
 node_modules
-# Docker
-Dockerfile*
-docker-compose.yml
-*.dockerignore
+
 
 # General
 *.DS_Store
