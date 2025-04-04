@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+requests
+transformers
+motor
+TensorFlow==2.16.1
+tf-keras
+sentencepiece
+dotenv
+
+# fastapi
+# uvicorn
+# pydantic
+# motor
+# requests
+# python-dotenv

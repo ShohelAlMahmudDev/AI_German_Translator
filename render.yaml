@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: chatbot-frontend
+    env: docker
+    repo: https://github.com/ShohelAlMahmudDev/AI_German_Translator.git # Replace with your repo URL
+    buildCommand: docker build -f chatbot-ui/Dockerfile -t chatbot-frontend .
+    startCommand: docker run -p 80:80 chatbot-frontend
+    region: oregon # or your preferred region
+    plan: free # or starter, standard, etc.
+    branch: main # or your branch
+    healthCheckPath: /
+
+  - type: web
+    name: chatbot-backend
+    env: docker
+    repo: https://github.com/ShohelAlMahmudDev/AI_German_Translator.git # Replace with your repo URL
+    buildCommand: docker build -f backend/Dockerfile -t chatbot-backend .
+    startCommand: docker run -p 8000:8000 chatbot-backend
+    region: oregon # or your preferred region
+    plan: free # or starter, standard, etc.
+    branch: main # or your branch
+    envVars:
+      - key: DEEPSEEK_API_KEY
+      - key: DEEPSEEK_API_URL
+      - key: REACT_APP_BACKEND_URL
+        sync: false # Set this manually in Render dashboard
+    healthCheckPath: /docs # FastAPI's default docs endpoint
