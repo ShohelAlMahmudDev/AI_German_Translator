@@ -2,10 +2,10 @@ services:
   - type: web
     name: german-translator-frontend
     env: docker
-    dockerfilePath: ./frontend/Dockerfile
+    dockerfilePath: ./frontend/Dockerfile  # Path to your frontend Dockerfile
     repo: https://github.com/ShohelAlMahmudDev/AI_German_Translator.git
-    rootDir: frontend
-    startCommand: npx serve -s build -l 10000  # Updated to use npx
+    rootDir: frontend  # Directory containing frontend code
+    startCommand: npx serve -s build -l 10000  # Matches Dockerfile CMD
     region: oregon
     plan: free
     branch: main
