@@ -1,27 +1,25 @@
 services:
   - type: web
-    name: chatbot-frontend
+    name: german-translator-frontend
     env: docker
-    repo: https://github.com/ShohelAlMahmudDev/AI_German_Translator.git # Replace with your repo URL
-    buildCommand: docker build -f chatbot-ui/Dockerfile -t chatbot-frontend .
-    startCommand: docker run -p 80:80 chatbot-frontend
-    region: oregon # or your preferred region
-    plan: free # or starter, standard, etc.
-    branch: main # or your branch
+    repo: https://github.com/ShohelAlMahmudDev/AI_German_Translator.git
+    buildCommand: docker build -f chatbot-ui/Dockerfile -t german-translator-frontend .
+    startCommand: serve -s build -l 10000  # Changed to 10000 for Render
+    region: oregon
+    plan: free
+    branch: main
     healthCheckPath: /
 
   - type: web
-    name: chatbot-backend
+    name: german-translator-backend
     env: docker
-    repo: https://github.com/ShohelAlMahmudDev/AI_German_Translator.git # Replace with your repo URL
-    buildCommand: docker build -f backend/Dockerfile -t chatbot-backend .
-    startCommand: docker run -p 8000:8000 chatbot-backend
-    region: oregon # or your preferred region
-    plan: free # or starter, standard, etc.
-    branch: main # or your branch
+    repo: https://github.com/ShohelAlMahmudDev/AI_German_Translator.git
+    buildCommand: docker build -f backend/Dockerfile -t german-translator-backend .
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 10000  # Changed to 10000 for Render
+    region: oregon
+    plan: free
+    branch: main
     envVars:
       - key: DEEPSEEK_API_KEY
-      - key: DEEPSEEK_API_URL
-      - key: REACT_APP_BACKEND_URL
-        sync: false # Set this manually in Render dashboard
-    healthCheckPath: /docs # FastAPI's default docs endpoint
+        sync: false # Set manually in dashboard
+    healthCheckPath: /docs
