@@ -10,7 +10,10 @@ services:
     healthCheckPath: /
     autoDeploy: true
     envVars:
+      - key: PORT
+        value: "3000"  # Must match Dockerfile EXPOSE and CMD port
       - key: REACT_APP_BACKEND_URL
+        value: https://german-translator-backend.onrender.com
         sync: false
 
   - type: web
