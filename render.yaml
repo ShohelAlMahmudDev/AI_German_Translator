@@ -31,7 +31,7 @@ services:
       - key: DEEPSEEK_API_URL
         sync: false
       - key: PORT
-        value: 10000
+        value: 8000
     healthCheckPath: /docs
     autoDeploy: true
     numInstances: 1
