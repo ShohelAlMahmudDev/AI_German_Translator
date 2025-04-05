@@ -4,13 +4,12 @@ services:
     env: docker
     dockerfilePath: frontend/Dockerfile
     repo: https://github.com/ShohelAlMahmudDev/AI_German_Translator.git
-    rootDir: .  # Root of repository
+    rootDir: frontend
     region: oregon
     plan: free
     branch: main
     healthCheckPath: /
     autoDeploy: true
-    numInstances: 1
     envVars:
       - key: REACT_APP_BACKEND_URL
         sync: false
