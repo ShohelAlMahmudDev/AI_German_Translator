@@ -1,17 +1,19 @@
 FROM node:18
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
-# Verify files exist before copying
-RUN ls -la /app/
+# Verify build context contents
+RUN ls -la /usr/src/app/
 
-# Explicit copy from build context
-COPY package.json .
-COPY package-lock.json .
+# Copy package files explicitly
+COPY ./frontend/package.json .
+COPY ./frontend/package-lock.json .
 RUN npm install
 
-COPY . .
-RUN npm run build
+# Copy application files
+COPY ./frontend .
 
+# Build and run
+RUN npm run build
 EXPOSE 3000
 CMD ["npm", "start"]
