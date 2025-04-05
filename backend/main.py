@@ -29,4 +29,4 @@ async def correct_sentence(request: SentenceRequest):
     return await deepseek_service.correct_sentence(request.sentence, request.languages)
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=1000, reload=True)
+    uvicorn.run(app, host="0.0.0.0", port=10000, reload=True)

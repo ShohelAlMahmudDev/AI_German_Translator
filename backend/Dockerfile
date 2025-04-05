@@ -13,5 +13,5 @@ RUN npm run build
 # Install lightweight server
 RUN npm install -g serve
 
-EXPOSE 1000
-CMD ["serve", "-s", "build", "-l", "1000"]  # Serve static files
+EXPOSE 10000
+CMD ["serve", "-s", "build", "-l", "10000"]  # Serve static files
