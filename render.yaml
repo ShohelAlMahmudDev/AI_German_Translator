@@ -11,7 +11,7 @@ services:
     autoDeploy: true
     envVars:
       - key: PORT
-        value: "80"  # Nginx uses port 80
+        value: "3000"  # Nginx uses port 80
       - key: REACT_APP_BACKEND_URL
         value: https://german-translator-backend.onrender.com
         sync: false

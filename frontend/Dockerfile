@@ -1,21 +1,23 @@
 FROM node:18-alpine
 
-WORKDIR /app
+# Set working directory INSIDE container
+WORKDIR /usr/src/app
 
-# Verify build context contents (debugging)
-RUN ls -la /app/
+# Debug: Show initial directory contents
+RUN ls -la /usr/src/app/
 
-# Copy package files from host to container
-COPY ./package.json ./package-lock.json ./
+# Copy package files explicitly from HOST to CONTAINER
+COPY ./frontend/package.json .
+COPY ./frontend/package-lock.json .
 RUN npm install --omit=dev
 
 # Copy all other files
-COPY . .
+COPY ./frontend .
 
 # Build production assets
 RUN npm run build
 
-# Install serve for production
+# Install production server
 RUN npm install -g serve
 
 EXPOSE 3000
