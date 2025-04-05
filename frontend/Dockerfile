@@ -20,5 +20,5 @@ RUN npm run build
 # Install production server
 RUN npm install -g serve
 
-EXPOSE 3000
-CMD ["serve", "-s", "build", "-l", "3000"]
+EXPOSE 8000
+CMD ["serve", "-s", "build", "-l", "8000"]
