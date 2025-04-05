@@ -37,6 +37,3 @@ services:
     healthCheckPath: /docs
     autoDeploy: true
     numInstances: 1
-    serviceDetails:
-      memory: 512MB
-      cpu: 0.25
