@@ -3,7 +3,6 @@ services:
     name: german-translator-frontend
     env: docker
     dockerfilePath: frontend/Dockerfile
-    repo: https://github.com/ShohelAlMahmudDev/AI_German_Translator.git
     rootDir: frontend
     region: oregon
     plan: free
