@@ -11,6 +11,12 @@ services:
     healthCheckPath: /
     autoDeploy: true
     numInstances: 1
+    envVars:
+      - key: REACT_APP_BACKEND_URL
+        value: https://german-translator-backend.onrender.com
+        sync: false
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./build  # Changed from dist to build (standard React output)
 
   - type: web
     name: german-translator-backend
@@ -26,6 +32,11 @@ services:
         sync: false
       - key: DEEPSEEK_API_URL
         sync: false
+      - key: PORT
+        value: 10000
     healthCheckPath: /docs
     autoDeploy: true
     numInstances: 1
+    serviceDetails:
+      memory: 512MB
+      cpu: 0.25

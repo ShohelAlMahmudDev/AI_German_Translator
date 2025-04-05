@@ -1,9 +1,10 @@
 FROM node:18
 WORKDIR /app
-COPY package.json package-lock.json ./
+# Copy package files first (optimizes layer caching)
+COPY package*.json ./
 RUN npm install
+# Copy all other files
 COPY . .
+# Build and run commands
 RUN npm run build
-RUN npm install serve
-EXPOSE 10000
-CMD ["npx", "serve", "-s", "build", "-l", "10000"]
+CMD ["npm", "start"]

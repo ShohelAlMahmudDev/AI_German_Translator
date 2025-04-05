@@ -1,9 +1,9 @@
 fastapi
 uvicorn
 requests
+python-dotenv
 dotenv
 
 # pydantic
-# motor
 # requests
 # python-dotenv
