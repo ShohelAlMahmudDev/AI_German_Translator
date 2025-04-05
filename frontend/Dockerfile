@@ -1,19 +1,12 @@
-FROM node:18
-
-WORKDIR /usr/src/app
-
-# Verify build context contents
-RUN ls -la /usr/src/app/
-
-# Copy package files explicitly
-COPY ./frontend/package.json .
-COPY ./frontend/package-lock.json .
-RUN npm install
-
-# Copy application files
-COPY ./frontend .
-
-# Build and run
+FROM node:18-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm install --omit=dev
+COPY . .
 RUN npm run build
-EXPOSE 3000
-CMD ["npm", "start"]
+
+FROM nginx:alpine
+COPY --from=builder /app/build /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

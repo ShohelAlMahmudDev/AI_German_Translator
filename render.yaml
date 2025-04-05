@@ -6,19 +6,15 @@ services:
     rootDir: frontend
     region: oregon
     plan: free
-    # Add resource limits
-    resources:
-      memory: 512MB
-      cpu: 0.25
     branch: main
+    healthCheckPath: /
+    autoDeploy: true
     envVars:
       - key: PORT
-        value: "3000"
+        value: "80"  # Nginx uses port 80
       - key: REACT_APP_BACKEND_URL
         value: https://german-translator-backend.onrender.com
         sync: false
-    healthCheckPath: /
-    autoDeploy: true
 
   - type: web
     name: german-translator-backend
