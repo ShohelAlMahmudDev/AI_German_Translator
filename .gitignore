@@ -1,4 +1,4 @@
-# Node.js / React (chatbot-ui)
+# Node.js / React (frontend)
 frontend/node_modules/
 frontend/build/
 frontend/.env
@@ -12,27 +12,20 @@ frontend/yarn-error.log*
 
 # Python / FastAPI (backend)
 __pycache__/
-backend/__pycache__/
-backend/*.pyc
-backend/*.pyo
-backend/*.pyd
+*.pyc
+*.pyo
+*.pyd
 backend/.env
-backend/.venv/
-backend/venv/
-backend/env/
+backend/*env/  # Covers .venv/, venv/, env/
 backend/*.log
 backend/pip-log.txt
-backend/node_modules
-node_modules
-
 
 # General
-*.DS_Store
+.DS_Store
 *.swp
 *.swo
 *.bak
 *.tmp
-*.log
 *.pid
 *.seed
 *.tar.gz
