@@ -1,15 +1,17 @@
-FROM python:3.11-slim
+FROM node:18-alpine  # More lightweight base image
 
 WORKDIR /app
 
-# First copy only requirements to leverage Docker cache
-COPY backend/requirements.txt .
+# Install only production dependencies
+COPY package.json package-lock.json ./
+RUN npm install --omit=dev  # Saves significant memory
 
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy and build
+COPY . .
+RUN npm run build
 
-# Copy the rest of the application
-COPY backend/ .
+# Install lightweight server
+RUN npm install -g serve
 
-EXPOSE 10000
-
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "10000"]
+EXPOSE 3000
+CMD ["serve", "-s", "build", "-l", "3000"]  # Serve static files

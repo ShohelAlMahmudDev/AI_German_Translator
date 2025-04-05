@@ -2,11 +2,14 @@ services:
   - type: web
     name: german-translator-frontend
     env: docker
-    dockerfilePath: ./frontend/Dockerfile
-    repo: https://github.com/ShohelAlMahmudDev/AI_German_Translator.git
-    rootDir: .  # Points to repository root
+    dockerfilePath: frontend/Dockerfile
+    rootDir: frontend
     region: oregon
     plan: free
+    # Add resource limits
+    resources:
+      memory: 512MB
+      cpu: 0.25
     branch: main
     envVars:
       - key: PORT
