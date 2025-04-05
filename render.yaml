@@ -2,9 +2,9 @@ services:
   - type: web
     name: german-translator-frontend
     env: docker
-    dockerfilePath: Dockerfile  # Changed path
+    dockerfilePath: frontend/Dockerfile
     repo: https://github.com/ShohelAlMahmudDev/AI_German_Translator.git
-    rootDir: frontend  # All commands will run from here
+    rootDir: .  # Root of repository
     region: oregon
     plan: free
     branch: main
@@ -18,9 +18,9 @@ services:
   - type: web
     name: german-translator-backend
     env: docker
-    dockerfilePath: Dockerfile  # Changed path
+    dockerfilePath: backend/Dockerfile
     repo: https://github.com/ShohelAlMahmudDev/AI_German_Translator.git
-    rootDir: backend  # All commands will run from here
+    rootDir: .  # Root of repository
     region: oregon
     plan: free
     branch: main
