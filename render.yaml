@@ -2,9 +2,9 @@ services:
   - type: web
     name: german-translator-frontend
     env: docker
-    dockerfilePath: ./frontend/Dockerfile
+    dockerfilePath: Dockerfile  # Changed path
     repo: https://github.com/ShohelAlMahmudDev/AI_German_Translator.git
-    rootDir: frontend
+    rootDir: frontend  # All commands will run from here
     region: oregon
     plan: free
     branch: main
@@ -14,14 +14,13 @@ services:
     envVars:
       - key: REACT_APP_BACKEND_URL
         sync: false
-    buildCommand: npm install && npm run build
 
   - type: web
     name: german-translator-backend
     env: docker
-    dockerfilePath: ./backend/Dockerfile
+    dockerfilePath: Dockerfile  # Changed path
     repo: https://github.com/ShohelAlMahmudDev/AI_German_Translator.git
-    rootDir: backend
+    rootDir: backend  # All commands will run from here
     region: oregon
     plan: free
     branch: main

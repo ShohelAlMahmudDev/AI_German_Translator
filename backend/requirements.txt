@@ -3,7 +3,4 @@ uvicorn
 requests
 python-dotenv
 dotenv
-
-# pydantic
-# requests
-# python-dotenv
+pydantic
