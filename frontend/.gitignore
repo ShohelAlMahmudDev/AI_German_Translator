@@ -3,10 +3,7 @@ node_modules/
 .pnpm-store/
 
 # Environment files
-.env.local
-.env.development
-.env.test
-.env.production
+.env
 
 # Build output
 dist/

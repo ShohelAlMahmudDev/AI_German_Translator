@@ -3,10 +3,10 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-backend/.env
-backend/*env/  # Covers .venv/, venv/, env/
-backend/*.log
-backend/pip-log.txt
+.env
+*env/  # Covers .venv/, venv/, env/
+*.log
+pip-log.txt
 
 # General
 .DS_Store
