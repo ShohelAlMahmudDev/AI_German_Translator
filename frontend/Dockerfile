@@ -1,20 +1,15 @@
 FROM node:18
 
 WORKDIR /app
-
-# First copy only package files for better caching
-COPY package.json package-lock.json ./
+# Copy package files first (relative to Dockerfile location)
+COPY ./package.json ./package-lock.json ./
 RUN npm install
 
-# Copy all other files
+# Copy remaining files
 COPY . .
 
-# Build the app
+# Build and serve
 RUN npm run build
-
-# Install serve for production
 RUN npm install -g serve
-
-# Expose port and run
 EXPOSE 3000
 CMD ["serve", "-s", "build", "-l", "3000"]
