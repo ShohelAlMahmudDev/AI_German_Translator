@@ -13,10 +13,8 @@ services:
     numInstances: 1
     envVars:
       - key: REACT_APP_BACKEND_URL
-        value: https://german-translator-backend.onrender.com
         sync: false
     buildCommand: npm install && npm run build
-    staticPublishPath: ./build  # Changed from dist to build (standard React output)
 
   - type: web
     name: german-translator-backend
