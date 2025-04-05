@@ -1,12 +1,17 @@
-FROM node:18-alpine AS builder
+FROM node:18-alpine  # More lightweight base image
+
 WORKDIR /app
-COPY package*.json ./
-RUN npm install --omit=dev
+
+# Install only production dependencies
+COPY package.json package-lock.json ./
+RUN npm install --omit=dev  # Saves significant memory
+
+# Copy and build
 COPY . .
 RUN npm run build
 
-FROM nginx:alpine
-COPY --from=builder /app/build /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# Install lightweight server
+RUN npm install -g serve
+
+EXPOSE 3000
+CMD ["serve", "-s", "build", "-l", "3000"]  # Serve static files
