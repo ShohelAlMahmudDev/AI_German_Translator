@@ -1,30 +1,22 @@
-FROM node:18-alpine AS builder
+FROM node:18-alpine
 
 WORKDIR /app
 
-# First copy only package files for better caching
-COPY package.json package-lock.json ./
+# Verify build context contents (debugging)
+RUN ls -la /app/
+
+# Copy package files from host to container
+COPY ./package.json ./package-lock.json ./
 RUN npm install --omit=dev
 
-# Copy all source files
+# Copy all other files
 COPY . .
 
 # Build production assets
 RUN npm run build
 
-# Production stage
-FROM node:18-alpine
-WORKDIR /app
-
-# Install serve globally
+# Install serve for production
 RUN npm install -g serve
-
-# Copy built assets from builder
-COPY --from=builder /app/build ./build
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s \
-  CMD wget --quiet --tries=1 --spider http://localhost:3000 || exit 1
 
 EXPOSE 3000
 CMD ["serve", "-s", "build", "-l", "3000"]
