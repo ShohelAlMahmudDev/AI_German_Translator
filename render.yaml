@@ -2,20 +2,21 @@ services:
   - type: web
     name: german-translator-frontend
     env: docker
-    dockerfilePath: frontend/Dockerfile
+    dockerfilePath: ./Dockerfile  # Important change
     repo: https://github.com/ShohelAlMahmudDev/AI_German_Translator.git
-    rootDir: .  # Critical change
+    rootDir: ./frontend  # Critical change
     region: oregon
     plan: free
     branch: main
     envVars:
       - key: PORT
-        value: "3000"  # Must match Dockerfile EXPOSE and CMD port
+        value: "3000"
       - key: REACT_APP_BACKEND_URL
         value: https://german-translator-backend.onrender.com
         sync: false
     healthCheckPath: /
     autoDeploy: true
+    
   - type: web
     name: german-translator-backend
     env: docker

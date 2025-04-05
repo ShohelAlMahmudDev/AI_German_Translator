@@ -1,15 +1,17 @@
 FROM node:18
 
 WORKDIR /app
-# Copy package files first (relative to Dockerfile location)
-COPY ./package.json ./package-lock.json ./
+
+# Verify files exist before copying
+RUN ls -la /app/
+
+# Explicit copy from build context
+COPY package.json .
+COPY package-lock.json .
 RUN npm install
 
-# Copy remaining files
 COPY . .
-
-# Build and serve
 RUN npm run build
-RUN npm install -g serve
+
 EXPOSE 3000
-CMD ["serve", "-s", "build", "-l", "3000"]
+CMD ["npm", "start"]
