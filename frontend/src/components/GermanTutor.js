@@ -83,7 +83,7 @@ const GermanTutor = () => {
         languages: selectedLanguages,
       };
 
-      const response = await fetch(`http://localhost:10000${endpoint}`, {
+      const response = await fetch(`https://german-translator-backend.onrender.com${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
